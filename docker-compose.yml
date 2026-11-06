@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16
+    container_name: ats_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ats_db
+    ports:
+      - "5433:5432"          # host 5433 -> container 5432 (avoids clashing with a local Postgres)
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ats_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: ats_app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PORT: 3000
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/ats_db?schema=public
+      JWT_SECRET: demo_secret_change_me_in_real_projects
+    ports:
+      - "3000:3000"
+
+volumes:
+  pgdata:

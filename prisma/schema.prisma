@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum JobStatus {
+  OPEN
+  CLOSED
+}
+
+enum ApplicationStatus {
+  APPLIED
+  SCREENING
+  SHORTLISTED
+  INTERVIEW
+  SELECTED
+  REJECTED
+}
+
+// Table 1: Recruiters who log in to the system
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String   // always stored as a bcrypt hash
+  createdAt DateTime @default(now())
+
+  jobs Job[]         // one recruiter -> many jobs
+}
+
+// Table 2: Job openings
+model Job {
+  id            Int       @id @default(autoincrement())
+  title         String
+  companyName   String
+  location      String
+  requiredSkills String[]
+  experience    Int       @default(0) // minimum years of experience
+  vacancies     Int       @default(1)
+  status        JobStatus @default(OPEN)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  createdById   Int
+  createdBy     User      @relation(fields: [createdById], references: [id])
+
+  applications  Application[] // one job -> many applications
+}
+
+// Table 3: People looking for jobs
+model Candidate {
+  id         Int      @id @default(autoincrement())
+  fullName   String
+  email      String   @unique
+  phone      String
+  education  String?
+  skills     String[]
+  experience Int      @default(0) // years
+  location   String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  applications Application[] // one candidate -> many applications
+}
+
+// Table 4: Links a Candidate to a Job and tracks the hiring stage
+model Application {
+  id          Int               @id @default(autoincrement())
+  status      ApplicationStatus @default(APPLIED)
+  appliedAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  jobId       Int
+  candidateId Int
+  job         Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  // The same candidate cannot apply to the same job twice
+  @@unique([jobId, candidateId])
+}

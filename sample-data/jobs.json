@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Sales Executive",
+    "companyName": "Sunrise Retail Pvt Ltd",
+    "location": "Hyderabad",
+    "requiredSkills": ["Communication", "Negotiation", "Customer Handling"],
+    "experience": 2,
+    "vacancies": 5,
+    "status": "OPEN"
+  },
+  {
+    "title": "HR Executive",
+    "companyName": "GreenLeaf Foods",
+    "location": "Bengaluru",
+    "requiredSkills": ["Recruitment", "Payroll", "MS Excel"],
+    "experience": 3,
+    "vacancies": 2,
+    "status": "OPEN"
+  },
+  {
+    "title": "Accountant",
+    "companyName": "Apex Textiles",
+    "location": "Chennai",
+    "requiredSkills": ["Tally", "GST Filing", "Bookkeeping"],
+    "experience": 4,
+    "vacancies": 1,
+    "status": "OPEN"
+  },
+  {
+    "title": "Customer Support Executive",
+    "companyName": "ConnectCare BPO",
+    "location": "Pune",
+    "requiredSkills": ["English Communication", "Typing", "Patience"],
+    "experience": 0,
+    "vacancies": 10,
+    "status": "CLOSED"
+  }
+]

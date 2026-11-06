@@ -1,0 +1,56 @@
+[
+  {
+    "fullName": "Anita Sharma",
+    "email": "anita.sharma@example.com",
+    "phone": "9876543210",
+    "education": "B.Com",
+    "skills": ["Tally", "GST Filing", "Bookkeeping"],
+    "experience": 5,
+    "location": "Chennai"
+  },
+  {
+    "fullName": "Rahul Verma",
+    "email": "rahul.verma@example.com",
+    "phone": "9876500011",
+    "education": "MBA (HR)",
+    "skills": ["Recruitment", "Payroll", "MS Excel"],
+    "experience": 3,
+    "location": "Bengaluru"
+  },
+  {
+    "fullName": "Priya Nair",
+    "email": "priya.nair@example.com",
+    "phone": "9123456780",
+    "education": "BBA",
+    "skills": ["Communication", "Negotiation", "Customer Handling"],
+    "experience": 2,
+    "location": "Hyderabad"
+  },
+  {
+    "fullName": "Mohammed Irfan",
+    "email": "irfan.m@example.com",
+    "phone": "9988776655",
+    "education": "B.A.",
+    "skills": ["English Communication", "Typing"],
+    "experience": 1,
+    "location": "Pune"
+  },
+  {
+    "fullName": "Sneha Reddy",
+    "email": "sneha.reddy@example.com",
+    "phone": "9000012345",
+    "education": "M.Com",
+    "skills": ["Tally", "Bookkeeping", "MS Excel"],
+    "experience": 4,
+    "location": "Hyderabad"
+  },
+  {
+    "fullName": "Karthik Raj",
+    "email": "karthik.raj@example.com",
+    "phone": "9345678901",
+    "education": "BBA",
+    "skills": ["Communication", "Customer Handling"],
+    "experience": 3,
+    "location": "Hyderabad"
+  }
+]

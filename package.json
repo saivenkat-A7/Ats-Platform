@@ -1,0 +1,24 @@
+{
+  "name": "ats-backend",
+  "version": "1.0.0",
+  "description": "Beginner-friendly Applicant Tracking System (ATS) backend for a Non-IT recruitment agency",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:push": "prisma db push",
+    "db:seed": "node prisma/seed.js",
+    "docker:start": "prisma db push --skip-generate && node prisma/seed.js && node server.js"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "dependencies": {
+    "@prisma/client": "5.22.0",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "5.22.0"
+  }
+}
